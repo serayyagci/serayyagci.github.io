@@ -10,9 +10,12 @@
 </head>
 
 <body>
-    <audio controls autoplay >
-        <source src="./sicak.mp3" type="audio/mpeg">
-    </audio>
+
+    <iframe src="sicak.mp3" allow="autoplay" style="display:none" id="iframeAudio">
+    </iframe>
+<audio autoplay loop id="playAudio">
+    <source src="sicak.mp3">
+</audio>
 
     <div class="stripe">
     </div>
@@ -223,5 +226,7 @@
         
         </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+    crossorigin="anonymous"></script>
     <script src="./countdown.js"></script>
 </html>
