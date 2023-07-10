@@ -1,0 +1,274 @@
+/* general styling */
+:root {
+    --smaller: .75;
+        --stripe-size: 100px;
+            --color1: #484848;
+            --color2: #313131;
+            --duration: 2s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    margin: 0;
+}
+button{
+    background-color: #E0513D;
+    padding: 2vw 20vw;
+    position: absolute;
+    top: 5%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    font-size: 4.5rem;
+    letter-spacing: .5rem;
+}
+audio{
+    display: none;
+}
+body {
+    align-items: center;
+    display: flex;
+    position: relative;
+    justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+    font-family: -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen-Sans,
+        Ubuntu,
+        Cantarell,
+        "Helvetica Neue",
+        sans-serif;
+}
+
+.container {
+    color: white;
+    text-align: center;
+    position: absolute;
+    margin: auto;
+}
+
+h1 {
+    font-weight: normal;
+    letter-spacing: .125rem;
+    text-transform: uppercase;
+}
+
+#countdown {
+    display: inline-block;
+    font-size: 1.5em;
+    list-style-type: none;
+    padding: 1em;
+    text-transform: uppercase;
+}
+
+#countdown {
+    display: block;
+    font-size: 3rem;
+    letter-spacing: .5rem;
+}
+
+.emoji {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.emoji span {
+    font-size: 4rem;
+    padding: 0 .5rem;
+}
+
+@media all and (max-width: 768px) {
+    h1 {
+        font-size: calc(1.5rem * var(--smaller));
+    }
+
+    li {
+        font-size: calc(1.125rem * var(--smaller));
+    }
+
+    li span {
+        font-size: calc(3.375rem * var(--smaller));
+    }
+}
+.stripe {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.stripe_inner {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 8rem;
+    text-align: center;
+    font-family: 'Anton', sans-serif;
+    color: rgba(255, 255, 255, 0);
+    background: repeating-linear-gradient(45deg, var(--color1) 25%, var(--color1) 50%, var(--color2) 50%, var(--color2) 75%);
+    background-size: var(--stripe-size) var(--stripe-size);
+    background-clip: text;
+    animation: stripeBackgroundPosition var(--duration) linear infinite;
+}
+
+.stripe::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% + var(--stripe-size));
+    height: 100%;
+    background: repeating-linear-gradient(45deg, var(--color2) 25%, var(--color2) 50%, var(--color1) 50%, var(--color1) 75%);
+    background-size: var(--stripe-size) var(--stripe-size);
+    animation: stripeTransform var(--duration) linear infinite;
+}
+
+.stripe::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(27, 39, 53, 0) 0%, #090a0f 100%);
+}
+
+@keyframes stripeTransform {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(var(--stripe-size) * -1));
+    }
+}
+
+@keyframes stripeBackgroundPosition {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: calc(var(--stripe-size) * -1) 0;
+    }
+}
+
+.mo-fire {
+    height: auto;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: -19vw;margin: 0 auto;
+    z-index: 4;
+}
+
+#svg-view {
+    width: 252px;
+    height: 125px;
+    left: 0px;
+}
+
+.mo-fire svg {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.flame {
+    animation-name: flameDisappear;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    opacity: 0.5;
+    transform-origin: 45% 45% 0;
+}
+
+.flame.one {
+    animation-delay: 1s;
+    animation-duration: 3s;
+}
+
+.flame.two {
+    animation-duration: 5s;
+    animation-delay: 1s;
+}
+
+
+.flame-main {
+    animation-name: flameMovement;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.flame-main.one {
+    animation-duration: 2.2s;
+    animation-delay: 1s;
+}
+
+.flame-main.two {
+    animation-duration: 2s;
+    animation-delay: 1s;
+}
+
+.flame-main.three {
+    animation-duration: 2.1s;
+    animation-delay: 3s;
+}
+
+.flame-main.four {
+    animation-duration: 3.2s;
+    animation-delay: 4s;
+}
+
+.flame-main.five {
+    animation-duration: 2.5s;
+    animation-delay: 5s;
+}
+
+@keyframes flameMovement {
+    50% {
+        transform: scale(0.98, 1.0) translate(0, 2px) rotate(-1deg);
+    }
+}
+
+@keyframes flameDisappear {
+    0% {
+        transform: translate(0) rotate(180deg);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-10px, -40px) rotate(180deg);
+        opacity: 0;
+    }
+
+}
+
+@media screen and (max-width:480px) {
+    .mo-fire{
+        bottom: -50px;
+    }
+    
+}
